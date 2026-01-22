@@ -86,39 +86,53 @@ payflow/
 ```bash
 docker-compose up -d
 
-## 2️⃣ Run the Spring Boot application
+
+## ▶️ Run the Spring Boot Application
+
 cd backend
 mvn spring-boot:run
 
+
 ## 🧪 How to Test the Flow
-## Push a payment job into Redis
+
+### ➤ Push a Payment Job into Redis
+
+```bash
 docker exec -it redis_payflow redis-cli
 LPUSH payflow_jobs "process_payment:pay_test_1001:upi"
+```
 
-## Expected Console Output
+---
+
+## ✅ Expected Console Output
+
+```text
 Job received: process_payment:pay_test_1001:upi
 Processing payment: pay_test_1001
 PAYMENT SUCCESS for pay_test_1001
 Webhook job queued: webhook:payment.success:pay_test_1001
 Delivering webhook: webhook:payment.success:pay_test_1001
 Webhook delivered: webhook:payment.success:pay_test_1001
+```
+
+---
 
 ## 🔁 Webhook Retry Logic
 
-Webhook delivery is simulated with random failures
+* **Webhook delivery is simulated** with random failures
+* **Failed webhooks are pushed back** into the Redis queue
+* **Worker retries delivery automatically**
 
-Failed webhooks are pushed back into the Redis queue
+---
 
-Worker retries delivery automatically
+## 📌 Notes
 
-##📌 Notes
+* **Database is intentionally replaced** with an in-memory fake DB for simplicity
+* **Real database integration (PostgreSQL/JPA)** can be added later without changing core logic
+* **Architecture follows real-world fintech async design**
 
-Database is intentionally replaced with an in-memory fake DB for simplicity
-
-Real database integration (PostgreSQL/JPA) can be added later without changing core logic
-
-Architecture follows real-world fintech async design
+---
 
 ## 👩‍💻 Author
 
-Lakshmi Anusha Meegada
+**Lakshmi Anusha Meegada**
