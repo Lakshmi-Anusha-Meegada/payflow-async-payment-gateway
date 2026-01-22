@@ -86,7 +86,7 @@ payflow/
 ```bash
 docker-compose up -d
 
-**2️⃣ Run the Spring Boot application**
+## 2️⃣ Run the Spring Boot application
 cd backend
 mvn spring-boot:run
 
