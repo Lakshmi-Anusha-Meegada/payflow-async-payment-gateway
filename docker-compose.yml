@@ -1,0 +1,20 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis_payflow
+    ports:
+      - "6379:6379"
+
+  api:
+    image: alpine:3.19
+    container_name: payflow_api
+    command: sh -c "while true; do sleep 60; done"
+    depends_on:
+      - redis
+
+  worker:
+    image: alpine:3.19
+    container_name: payflow_worker
+    command: sh -c "while true; do sleep 60; done"
+    depends_on:
+      - redis
