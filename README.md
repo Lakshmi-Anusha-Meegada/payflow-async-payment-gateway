@@ -83,7 +83,7 @@ payflow/
 ## ▶️ How to Run the Project
 
 ### 1️⃣ Start Redis using Docker
-```bash
+
 docker-compose up -d
 
 
