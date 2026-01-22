@@ -52,17 +52,29 @@ Webhook Delivered (with retry)
 
 
 payflow/
+
 ├── backend/
+
 │ ├── src/main/java/com/gateway/
+
 │ │ ├── GatewayApplication.java
+
 │ │ ├── config/RedisConfig.java
+
 │ │ └── workers/
+
 │ │ ├── PaymentWorker.java
+
 │ │ └── WebhookWorker.java
+
 │ ├── Dockerfile
+
 │ ├── Dockerfile.worker
+
 │ └── pom.xml
+
 ├── docker-compose.yml
+
 └── .gitignore
 
 
@@ -74,7 +86,7 @@ payflow/
 ```bash
 docker-compose up -d
 
-2️⃣ Run the Spring Boot application
+**2️⃣ Run the Spring Boot application**
 cd backend
 mvn spring-boot:run
 
